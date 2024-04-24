@@ -26,21 +26,47 @@ class Game:
 
 
     def display_game_info(self):
+        print(self.wrong_tries, self.max_tries)
         print(f"You have {self.max_tries - self.wrong_tries} remaining attemp(s).\n")
+        print(f"Selected letters: {", ".join(self.guessed_letters)}")
 
-    
+
     def check_guesses(self):
+        #Reveal guessed letters
         self.game_phrase.phrase_reveal(self.guessed_letters)
+        #Show the user current game info
+        self.display_game_info()
 
 
     def user_guess(self):
+        #Has the user guess a letter as long as the game is not over
         while self.game_phrase.hidden_phrase != self.game_phrase.phrase and self.wrong_tries != self.max_tries:
             print(self.game_phrase.hidden_phrase)
-            print(self.game_phrase)
-            user_guess = input("Please select a letter to guess:    ")
-            if user_guess not in self.game_phrase.phrase:
+            user_guess = input("Please select a letter to guess:   ")
+            #Check for valid guess
+            while not user_guess.isalpha() or len(user_guess) != 1 or user_guess in self.guessed_letters:
+                #Check to see if letter already guessed
+                if user_guess in self.guessed_letters:
+                    print("You already guessed that letter.\n")
+                #Gives one mistake for a mistype
+                elif not self.warning:
+                    self.warning = True
+                    self.wrong_tries =- 1
+                    print("Please choose a single letter. You are allowed one mulligan. Next will deduct a guess.")
+                #Message if guess not a single letter.
+                else:
+                    print("Please choose a single letter")
+                
                 self.wrong_tries += 1
+                if self.wrong_tries != self.max_tries:
+                    user_guess = input("Please select a letter to guess:   ")
+
+            #Deduct an attempt if letter not in phrase
+            if user_guess not in self.game_phrase.phrase and self.wrong_tries != self.max_tries:
+                self.wrong_tries += 1
+            #Append the guess if legit guess
             self.guessed_letters.append(user_guess)
+            #Check if user guess is in phrase.
             self.check_guesses()
 
 
@@ -50,15 +76,12 @@ class Game:
             for letter in self.game_phrase.hidden_phrase:
                 if letter.isalpha():
                     total_right += 1
-            print(f"You did not guess correct\nThe phrase was {self.game_phrase.phrase}\nYou got {total_right} letters right.")
+            print(f"\nYou did not guess correct\nThe phrase was {self.game_phrase.phrase}\nYou got {total_right} letters right.\n")
 
 
     def game_win(self):
         if self.game_phrase.hidden_phrase == self.game_phrase.phrase:
             print("Congrats you won")
-
-        self.play_again()
-
 
 
     def play_again(self):
@@ -67,14 +90,14 @@ class Game:
             self.run_game()
         elif choice == 2:
             exit()
-            
-        self.play_again()
+
 
     def run_game(self):
         self.welcome()
         self.user_guess()
         self.game_loss()
         self.game_win()
+        self.play_again()
 
 
 
