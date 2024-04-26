@@ -16,7 +16,7 @@ class Phrase:
                 self.hidden_phrase += letter
             else:
                 self.hidden_phrase += "-"
-        print(self.hidden_phrase)
+        print(f"You're Phrase:\n{self.hidden_phrase}")
 
 
 
