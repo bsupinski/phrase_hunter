@@ -72,10 +72,11 @@ class Game:
                     print("")
                 #Mesasage if guess is not a single letter
                 else:
+                    self.wrong_tries += 1
                     print("Please choose a single letter.")
                     self.display_game_info()
                     print(f'{self.game_phrase.hidden_phrase}')
-                    self.wrong_tries += 1
+                    
                 continue
             
             #Check to see if letter already guessed
