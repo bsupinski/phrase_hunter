@@ -12,8 +12,8 @@ class Game:
         self.wrong_tries = 0
         self.start_time = None
         self.current_score = None
-        self.highscore = None
-        self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "Ther Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
+        self.high_score = None
+        self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "The Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
 
  
     def set_start_time(self):
@@ -36,6 +36,9 @@ class Game:
     def welcome(self):
         print(f"""========================\nWelcome to Phrase Hunter\n========================\nPlease choose a single letter.\nYou will have {self.max_tries} wrong guesse(s) till the game ends."""
         )
+        if self.high_score == None:
+            print("There is no current high score")
+        else:print(f"The current high score is {self.format_score(self.high_score)}")
         input("Press enter to continue...")
         self.set_phrase()
         self.set_start_time()
@@ -45,7 +48,7 @@ class Game:
 
     def display_game_info(self):
         self.set_current_score()
-        print(f"You have {self.max_tries - self.wrong_tries} remaining attemp(s).          Current Score:{self.format_score(self.current_score)}")
+        print(f"You have {self.max_tries - self.wrong_tries} remaining attemp(s).          Current Score: {self.format_score(self.current_score)}")
         print(f"Selected letters: {','.join(self.guessed_letters)}")
 
 
@@ -98,14 +101,14 @@ class Game:
 
     def game_win(self):
         if self.game_phrase.hidden_phrase == self.game_phrase.phrase:
-            if self.highscore == None:
-                self.highscore = self.current_score
-                print(f"\nCongrats you guessed correctly and have the new highscore at {self.format_score(self.highscore)}\n")
-            elif self.current_score < self.highscore:
-                self.highscore = self.current_score
-                print(f"\nCongrats you guessed correctly and have the new highscore at {self.format_score(self.highscore)}\n")
+            if self.high_score == None:
+                self.high_score = self.current_score
+                print(f"\nCongrats you guessed correctly and have the new high score at {self.format_score(self.high_score)}\n")
+            elif self.current_score < self.high_score:
+                self.high_score = self.current_score
+                print(f"\nCongrats you guessed correctly and have the new high score at {self.format_score(self.high_score)}\n")
             else:
-                print(f"\nCongrats you guessed the phrase correct with a highscore of {self.format_score(self.current_score)}\nThe current highscore is {self.format_score(self.highscore)}\n")
+                print(f"\nCongrats you guessed the phrase correct with a high score of {self.format_score(self.current_score)}\nThe current high score is {self.format_score(self.high_score)}\n")
 
 
     def game_loss(self):
