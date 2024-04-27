@@ -1,4 +1,4 @@
-from phrase import Phrase
+from phrasehunter.phrase import Phrase
 from datetime import datetime
 import random
 class Game:

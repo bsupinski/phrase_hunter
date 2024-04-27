@@ -1,4 +1,4 @@
-from phrasehunter import Game
-
+from phrasehunter.game import Game
 if __name__ == "__main__":
-    print("Hello World")
+    new_game = Game()
+    new_game.run_game()
