@@ -15,7 +15,7 @@ class Game:
         self.highscore = None
         self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "Ther Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
 
-
+ 
     def set_start_time(self):
         self.start_time = datetime.now()
 
@@ -25,7 +25,7 @@ class Game:
 
 
     def format_score(self, score):
-        return f"{str(score.seconds // 60).rjust(2, "0")}m:{str(score.seconds % 60).rjust(2, "0")}s:{str(score.microseconds)[:2]}ms"
+        return f"{str(score.seconds // 60).rjust(2, '0')}m:{str(score.seconds % 60).rjust(2, '0')}s:{str(score.microseconds)[:2]}ms"
 
 
     def set_phrase(self):
@@ -46,7 +46,7 @@ class Game:
     def display_game_info(self):
         self.set_current_score()
         print(f"You have {self.max_tries - self.wrong_tries} remaining attemp(s).          Current Score:{self.format_score(self.current_score)}")
-        print(f"Selected letters: {", ".join(self.guessed_letters)}")
+        print(f"Selected letters: {','.join(self.guessed_letters)}")
 
 
     def check_guesses(self):
