@@ -48,7 +48,6 @@ class Game:
 
 
     def set_phrase(self):
-        # self.game_phrase = Phrase("cat")
         self.game_phrase = Phrase(random.choice(self.phrases))
         self.game_phrase = self.game_phrase.phrase
 
