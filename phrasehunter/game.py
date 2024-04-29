@@ -13,9 +13,9 @@ class Game:
         self.start_time = None
         self.current_score = None
         self.high_score = None
-        self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "The Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
+        # self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "The Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
+        self.phrases = [Phrase("The Way of the Kings"), Phrase("Words of Radiance"), Phrase("Oathbringer"), Phrase("Rhytm of War"), Phrase("Edgedance")]
 
- 
     def set_start_time(self):
         self.start_time = datetime.now()
 
@@ -31,7 +31,7 @@ class Game:
     def set_phrase(self):
         # self.game_phrase = Phrase("cat")
         self.game_phrase = Phrase(random.choice(self.phrases))
-
+        self.game_phrase = self.game_phrase.phrase
 
     def welcome(self):
         print(f"""========================\nWelcome to Phrase Hunter\n========================\nPlease choose a single letter.\nYou will have {self.max_tries} wrong guesse(s) till the game ends."""
