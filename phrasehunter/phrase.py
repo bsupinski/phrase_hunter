@@ -3,6 +3,7 @@ class Phrase:
         self.phrase = phrase
         self.hidden_phrase = ""
 
+
     def __str__(self):
         return self.phrase
 
@@ -17,9 +18,6 @@ class Phrase:
             else:
                 self.hidden_phrase += "-"
         print(f"You're Phrase:\n{self.hidden_phrase}")
-
-
-
 
 
 if __name__ == "__main__":
