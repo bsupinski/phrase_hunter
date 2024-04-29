@@ -13,8 +13,27 @@ class Game:
         self.start_time = None
         self.current_score = None
         self.high_score = None
-        # self.phrases = ["The Way of the Kings", "Words of Radiance", "Oathbringer", "Rhythm of war", "Edgedancer", "Dawnshard", "The Final Empire", "The Well of Ascension", "The Hero of Ages", "Secret History", "The Alloy of Law", "Shadows of Self", "The Bands of Mourning", "The Lost Metal", "Tress of the Emerald Sea", "Yumi and The Nightmare Painter", "The Sunlit Man", "Elantris", "Warbreaker"]
-        self.phrases = [Phrase("The Way of the Kings"), Phrase("Words of Radiance"), Phrase("Oathbringer"), Phrase("Rhytm of War"), Phrase("Edgedance")]
+        self.phrases = [
+            Phrase("The Way of the Kings"), 
+            Phrase("Words of Radiance"), 
+            Phrase("Oathbringer"), 
+            Phrase("Rhytm of War"), 
+            Phrase("Edgedance"),
+            Phrase("Dawnshard"),
+            Phrase("The Final Empire"),
+            Phrase("The Well of Ascension"),
+            Phrase("The Hero of Ages"),
+            Phrase("Secret History"),
+            Phrase("The ALloy of Law"),
+            Phrase("Shadow of Self"),
+            Phrase("The Bands of Mourning"),
+            Phrase("The Lost Metal"),
+            Phrase("Tress of the Emerald Sea"),
+            Phrase("Yumi and the Nightmare Painter"),
+            Phrase("The Sunlit Man"),
+            Phrase("Elantris"),
+            Phrase("Warbreaker")
+        ]
 
     def set_start_time(self):
         self.start_time = datetime.now()
